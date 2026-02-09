@@ -12,18 +12,86 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": [
+      {
+        "title": "Prompt Intelligence",
+        "properties": {
+          "promptIntelligence.rules.VagueReference.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable VagueReference rule to detect vague pronouns"
+          },
+          "promptIntelligence.rules.MissingContext.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable MissingContext rule to detect missing context"
+          },
+          "promptIntelligence.rules.CompoundQuestion.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable CompoundQuestion rule to detect multiple questions"
+          },
+          "promptIntelligence.rules.VerbosePhrasing.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable VerbosePhrasing rule to detect verbose expressions"
+          },
+          "promptIntelligence.rules.InsufficientDetail.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable InsufficientDetail rule to detect lack of detail"
+          },
+          "promptIntelligence.confidenceThreshold": {
+            "type": "number",
+            "default": 0.7,
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Confidence threshold for accepting suggestions (0-1)"
+          },
+          "promptIntelligence.maxPromptLength": {
+            "type": "number",
+            "default": 10000,
+            "minimum": 1,
+            "description": "Maximum allowed prompt length in characters"
+          },
+          "promptIntelligence.performanceTimeout": {
+            "type": "number",
+            "default": 200,
+            "minimum": 1,
+            "description": "Performance timeout for analysis in milliseconds"
+          },
+          "promptIntelligence.showPerformanceWarnings": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show warnings when analysis exceeds timeout"
+          }
+        }
+      }
+    ],
     "commands": [
       {
         "command": "prompt-intelligence-layer.optimizePrompt",
         "title": "Optimize Prompt"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "prompt-intelligence-layer.optimizePrompt",
+        "key": "ctrl+shift+o",
+        "mac": "cmd+shift+o",
+        "when": "editorTextFocus"
+      }
     ]
   },
   "scripts": {
-    "compile": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
-    "watch": "npm run compile -- --sourcemap --watch",
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "node esbuild.js",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "test:unit": "mocha --require ts-node/register test/unit/**/*.test.ts",
+    "package": "vsce package"
   },
   "dependencies": {
     "@types/node": "^20.x",

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'">
+  <title>Optimization Preview</title>
+</head>
+<body>
+  <h3>Optimization Preview</h3>
+  <div id="content"></div>
+  <button id="use">Use Optimized</button>
+  <button id="keep">Keep Original</button>
+  <button id="cancel">Cancel</button>
+  <script>
+    const api = acquireVsCodeApi();
+    document.getElementById('use').addEventListener('click', () => api.postMessage({ type: 'choose', choice: 'optimized' }));
+    document.getElementById('keep').addEventListener('click', () => api.postMessage({ type: 'choose', choice: 'original' }));
+    document.getElementById('cancel').addEventListener('click', () => api.postMessage({ type: 'choose', choice: 'cancel' }));
+    window.addEventListener('message', event => {
+      const data = event.data;
+      if (data && data.type === 'init') {
+        const { original, optimized, changes } = data.payload;
+        document.getElementById('content').textContent = 'Original:\n' + original + '\n\nOptimized:\n' + optimized;
+      }
+    });
+  </script>
+</body>
+</html>
