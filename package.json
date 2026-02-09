@@ -1,0 +1,39 @@
+{
+  "name": "prompt-intelligence-layer",
+  "displayName": "Prompt Intelligence Layer",
+  "description": "Optimize and enhance your prompts with intelligent analysis",
+  "version": "0.0.1",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "prompt-intelligence-layer.optimizePrompt",
+        "title": "Optimize Prompt"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "npm run compile -- --sourcemap --watch",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.85.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.x",
+    "@typescript-eslint/parser": "^6.x",
+    "esbuild": "^0.19.x",
+    "eslint": "^8.x",
+    "typescript": "^5.3.x"
+  }
+}
