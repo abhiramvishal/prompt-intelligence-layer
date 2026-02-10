@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(statusBar)
 
   // Optimization panel (lazy creation)
-  optimizationPanel = new OptimizationPanel(context)
+  optimizationPanel = new OptimizationPanel()
   context.subscriptions.push(optimizationPanel)
 
   // Command registration

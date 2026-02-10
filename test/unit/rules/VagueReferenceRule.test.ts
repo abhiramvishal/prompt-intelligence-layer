@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha';
 import assert from 'assert';
-import { VagueReferenceRule } from '../../src/rules/VagueReferenceRule';
-import { RuleSeverity } from '../../src/types';
+import { VagueReferenceRule } from '../../../src/rules/VagueReferenceRule';
+import { RuleSeverity } from '../../../src/types';
 
 describe('VagueReferenceRule', () => {
   let rule: VagueReferenceRule;

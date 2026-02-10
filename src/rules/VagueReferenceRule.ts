@@ -1,5 +1,5 @@
-import { OptimizationRule } from '../base/OptimizationRule';
-import { RuleResult, RuleSeverity, Suggestion } from '../../types';
+import { OptimizationRule } from './base/OptimizationRule';
+import { RuleResult, RuleSeverity, Suggestion } from '../types';
 
 /**
  * VagueReferenceRule detects vague pronouns (this, it, that, these, those)

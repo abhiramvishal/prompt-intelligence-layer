@@ -100,8 +100,13 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.x",
     "@typescript-eslint/parser": "^6.x",
+    "@vscode/test-electron": "^2.3.x",
     "esbuild": "^0.19.x",
     "eslint": "^8.x",
+    "glob": "^10.x",
+    "mocha": "^10.x",
+    "@types/mocha": "^10.x",
+    "ts-node": "^10.x",
     "typescript": "^5.3.x"
   }
 }

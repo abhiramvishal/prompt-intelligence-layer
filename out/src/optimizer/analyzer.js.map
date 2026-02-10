@@ -1,0 +1,1 @@
+{"version":3,"file":"analyzer.js","sourceRoot":"","sources":["../../../src/optimizer/analyzer.ts"],"names":[],"mappings":";;;AACA,4CAA4C;AAC5C,MAAa,cAAc;IACzB,mHAAmH;IACnH,OAAO,CAAC,OAAe;QACrB,gDAAgD;QAChD,OAAO;YACL,cAAc,EAAE,OAAO;YACvB,eAAe,EAAE,OAAO;YACxB,YAAY,EAAE,EAAE;YAChB,YAAY,EAAE,CAAC;YACf,cAAc,EAAE,CAAC;SAClB,CAAC;IACJ,CAAC;CACF;AAZD,wCAYC"}
